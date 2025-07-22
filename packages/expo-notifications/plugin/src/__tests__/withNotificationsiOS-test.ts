@@ -43,6 +43,7 @@ describe('iOS notifications configuration', () => {
 
   it('writes all the asset files (sounds and images) as expected', async () => {
     const project = IOSConfig.XcodeUtils.getPbxproj(projectRoot);
+    IOSConfig.XcodeUtils.ensureGroupRecursively(project, 'testproject');
     setNotificationSounds(projectRoot, {
       sounds: ['/app/assets/notificationSound.wav'],
       project,
