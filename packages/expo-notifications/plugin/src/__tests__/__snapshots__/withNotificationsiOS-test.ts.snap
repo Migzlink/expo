@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`iOS notifications configuration writes all the asset files (sounds and images) as expected 1`] = `""`;
