@@ -43,12 +43,20 @@ describe('iOS notifications configuration', () => {
 
   it('writes all the asset files (sounds and images) as expected', async () => {
     const project = IOSConfig.XcodeUtils.getPbxproj(projectRoot);
-    // TODO: test pbxproj result via snapshot
     setNotificationSounds(projectRoot, {
       sounds: ['/app/assets/notificationSound.wav'],
       project,
       projectName: 'testproject',
     });
+
+    // Persist the modified pbxproj so we can compare it
+    fs.writeFileSync(
+      '/app/ios/testproject.xcodeproj/project.pbxproj',
+      project.writeSync()
+    );
+
+    const updated = IOSConfig.XcodeUtils.getPbxproj(projectRoot);
+    expect(updated.writeSync()).toMatchSnapshot();
 
     const after = getDirFromFS(vol.toJSON(), projectRoot);
     expect(Object.keys(after).sort()).toEqual(LIST_OF_GENERATED_FILES.sort());
