@@ -165,7 +165,7 @@ function parseCalendarTrigger(
 
 function parseDateTrigger(trigger: NotificationTriggerInput): NativeDateTriggerInput | undefined {
   if (trigger instanceof Date || typeof trigger === 'number') {
-    // TODO @vonovak this branch is not be used by people using TS
+    // TODO @vonovak this branch is not used by TypeScript consumers
     // but was part of the public api previously so we keep it for a bit for JS users
     console.warn(
       `You are using a deprecated parameter type (${trigger}) for the notification trigger. Use "{ type: 'date', date: someValue }" instead.`

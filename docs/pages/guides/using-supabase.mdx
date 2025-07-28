@@ -63,6 +63,24 @@ Now you can `import { supabase } from '/utils/supabase'` throughout your applica
 
 </Step>
 
+<Step label="3">
+
+Enable row level security (RLS) on your tables and create policies to control who can read or modify data.
+
+```sql
+alter table your_table enable row level security;
+
+create policy "Users can manage their own rows"
+on your_table
+for all
+using (auth.uid() = user_id)
+with check (auth.uid() = user_id);
+```
+
+Test your policies by performing queries as an authenticated user and ensure that unauthorized access is denied.
+
+</Step>
+
 ## Next steps
 
 <BoxLink

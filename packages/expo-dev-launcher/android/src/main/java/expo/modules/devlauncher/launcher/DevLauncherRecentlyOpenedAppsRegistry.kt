@@ -6,7 +6,8 @@ import android.net.Uri
 import com.google.gson.Gson
 import expo.modules.manifests.core.Manifest
 
-private const val RECENTLY_OPENED_APPS_SHARED_PREFERENCES = "expo.modules.devlauncher.recentyopenedapps"
+// Keep Android and iOS keys in sync for consistent cross-platform behavior
+private const val RECENTLY_OPENED_APPS_SHARED_PREFERENCES = "expo.devlauncher.recentlyopenedapps"
 
 private const val TIME_TO_REMOVE = 1000 * 60 * 60 * 24 * 3 // 3 days
 
